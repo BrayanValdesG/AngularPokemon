@@ -3,6 +3,7 @@ button.primaryColor {
     color: $base !important;
     width: auto !important;
     height: 16px !important;
+    min-width: 5rem;
 
     svg {
         path {
