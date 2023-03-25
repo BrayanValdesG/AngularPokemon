@@ -14,6 +14,9 @@
             }
         }
     }
+    button:disabled {
+        background-color: $primaryColorDisabled !important;
+    }
 }
 
 .icon {
