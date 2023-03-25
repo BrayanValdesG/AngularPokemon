@@ -12,6 +12,7 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
 
   private unsubscribe$: Subject<void> = new Subject<void>();
   pokemons: ResponseGetPokemon[] = [];
+  filterPokemon = '';
 
   constructor(
     private pokemonService: PokemonService

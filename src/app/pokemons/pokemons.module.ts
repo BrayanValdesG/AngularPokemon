@@ -12,19 +12,23 @@ import { BasePokemonComponent } from './containers';
 
 // Components
 import { ListPokemonsComponent } from './components';
+import { SearchPokemonPipe } from './pipes/search-pokemon.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     BasePokemonComponent,
-    ListPokemonsComponent
+    ListPokemonsComponent,
+    SearchPokemonPipe
   ],
   imports: [
     CommonModule,
     PokemonsRoutingModule,
     SharedModule,
     HttpClientModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    FormsModule
   ],
   providers: [
     PokemonService
