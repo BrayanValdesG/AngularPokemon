@@ -1,12 +1,32 @@
-button.primaryColor {
-    background-color: $primaryColor !important;
-    color: $base !important;
-    width: auto !important;
-    height: 16px !important;
+.primaryColor {
+    button {
+        background-color: $primaryColor !important;
+        color: $base !important;
+        width: auto !important;
+        height: 16px !important;
+        min-width: 5rem;
+        display: flex;
+        cursor: pointer;
 
-    svg {
-        path {
-            fill: $base;
+        svg {
+            path {
+                fill: $base;
+            }
+        }
+    }
+    button:disabled {
+        background-color: $primaryColorDisabled !important;
+    }
+}
+
+.icon {
+    button {
+        background: transparent;
+        border: 0px;
+        cursor: pointer;
+
+        span {
+            color: $primaryColor;
         }
     }
 }
