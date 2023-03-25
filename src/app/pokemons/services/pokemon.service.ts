@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/*';
 import { ResponseGetPokemon } from '@pokemons/models/pokemon.model';
@@ -14,11 +14,6 @@ export class PokemonService {
   ) { }
 
   getPokemons(): Observable<ResponseGetPokemon[]> {
-    const params = new HttpHeaders();
-    const body = {
-      idAuthor: 1
-    }
-    params.append('idAuthor', '1');
     return this.http.get<ResponseGetPokemon[]>(this.apiPokemon + '/?idAuthor=1')
     .pipe(map(this.extractData))
     .pipe(catchError(this.handleError));;
@@ -35,7 +30,7 @@ export class PokemonService {
   // Manejador de errores
   public handleError(error: any) {
     const errMsg = error.message || "Server error";
-    console.error("Error al comunicarse al servicio:" + errMsg); // log to console instead
+    console.error("Error al comunicarse al servicio:" + errMsg);
     return throwError(errMsg);
   }
 }

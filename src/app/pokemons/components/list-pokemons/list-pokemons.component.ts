@@ -33,9 +33,12 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
     this.pokemonService.getPokemons()
     .pipe(takeUntil(this.unsubscribe$))
     .subscribe((res) => {
-      this.pokemons = res;
-      console.log(res);
+      // this.pokemons = res;
     });
   }
+
+  trackByPokemon(idx: number,pokemon: ResponseGetPokemon) {
+    return pokemon.id;
+   }
 
 }
