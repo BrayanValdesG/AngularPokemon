@@ -13,7 +13,7 @@ import { SearchPokemonPipe } from './pipes/search-pokemon.pipe';
 // Containers
 import { BasePokemonComponent } from './containers';
 // Components
-import { ListPokemonsComponent, FormPokemonComponent } from './components';
+import { ListPokemonsComponent } from './components';
 
 
 @NgModule({
@@ -21,7 +21,6 @@ import { ListPokemonsComponent, FormPokemonComponent } from './components';
     BasePokemonComponent,
     ListPokemonsComponent,
     SearchPokemonPipe,
-    FormPokemonComponent
   ],
   imports: [
     CommonModule,

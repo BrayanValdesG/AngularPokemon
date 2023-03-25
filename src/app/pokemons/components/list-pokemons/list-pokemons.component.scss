@@ -13,3 +13,12 @@
 input {
     padding-left: 40px;
 }
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    align-content: center;
+    justify-content: center;
+}
