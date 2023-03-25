@@ -1,0 +1,26 @@
+@import "colors";
+
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: $secondaryColor;
+}
+
+.toolbar::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    color: $secondaryColorDark;
+    width: 100%;
+    font-size: 3rem;
+    line-height: 0;
+    padding: 16px 0;
+    text-indent: 4px;
+}

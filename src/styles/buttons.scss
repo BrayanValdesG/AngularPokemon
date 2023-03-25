@@ -1,0 +1,12 @@
+button.primaryColor {
+    background-color: $primaryColor !important;
+    color: $base !important;
+    width: auto !important;
+    height: 16px !important;
+
+    svg {
+        path {
+            fill: $base;
+        }
+    }
+}
