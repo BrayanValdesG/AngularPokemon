@@ -1,13 +1,26 @@
-button.primaryColor {
-    background-color: $primaryColor !important;
-    color: $base !important;
-    width: auto !important;
-    height: 16px !important;
-    min-width: 5rem;
+.primaryColor {
+    button {
+        background-color: $primaryColor !important;
+        color: $base !important;
+        width: auto !important;
+        height: 16px !important;
+        min-width: 5rem;
 
-    svg {
-        path {
-            fill: $base;
+        svg {
+            path {
+                fill: $base;
+            }
+        }
+    }
+}
+
+.icon {
+    button {
+        background: transparent;
+        border: 0px;
+
+        span {
+            color: $primaryColor;
         }
     }
 }

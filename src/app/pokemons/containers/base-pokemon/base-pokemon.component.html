@@ -1,49 +1,8 @@
 <div class="container">
     <!-- Listado -->
-    <div class="row">
-        <h2>Listado de Pokemon</h2>
-    </div>
-    <div class="card-container">
-        <input type="text" name="" id="" placeholder="Buscar">
-        <div class="spacer"></div>
-        <app-button [title]="'Nuevo'" [icon]="'add'"></app-button>
-    </div>
 
-    <div class="card-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Imágen</th>
-                    <th>Ataque</th>
-                    <th>Defensa</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Yvysaur</td>
-                    <td>Yvysaur</td>
-                    <td>65</td>
-                    <td>38</td>
-                    <td>
-                        <div class="operationsWrapper">
-                            <button type="button">
-                                <span class="material-symbols-outlined">
-                                    border_color
-                                </span>
-                            </button>
-                            <button type="button">
-                                <span class="material-symbols-outlined">
-                                    delete_forever
-                                </span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <app-list-pokemons></app-list-pokemons>
+
 
     <div class="card-container">
         <div class="card">

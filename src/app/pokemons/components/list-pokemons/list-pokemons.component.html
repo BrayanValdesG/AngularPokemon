@@ -1,0 +1,36 @@
+<div class="row">
+    <h2>Listado de Pokemon</h2>
+</div>
+<div class="card-container">
+    <input type="text" name="" id="" placeholder="Buscar">
+    <div class="spacer"></div>
+    <app-button [title]="'Nuevo'" [icon]="'add'" [class]="'primaryColor'"></app-button>
+</div>
+
+<div class="card-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Imágen</th>
+                <th>Ataque</th>
+                <th>Defensa</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pokemon of pokemons">
+                <td>{{pokemon.name}}</td>
+                <td style="text-align: center"><img [ngSrc]="pokemon.image" [alt]="pokemon.name" width="100" height="100"></td>
+                <td>{{pokemon.attack}}</td>
+                <td>{{pokemon.defense}}</td>
+                <td>
+                    <div class="operationsWrapper">
+                        <app-button [icon]="'border_color'" [class]="'icon'"></app-button>
+                        <app-button [icon]="'delete_forever'" [class]="'icon'"></app-button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

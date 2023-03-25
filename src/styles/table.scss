@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+    border: 1px solid $secondaryColorLight;
+    border-spacing: 0px;
+    background-color: $base;
+
+    th, td {
+        border: 1px solid $secondaryColorLight;
+        height: 10px;
+        padding: 16px;
+        font-size: 18px;
+    }
+}
+
+.operationsWrapper {
+    display: flex;
+    justify-content: space-around;
+}

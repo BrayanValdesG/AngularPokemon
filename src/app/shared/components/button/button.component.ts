@@ -9,11 +9,12 @@ export class ButtonComponent {
 
   @Input() title: string = '';
   @Input() icon: string = '';
+  @Input() classButton: string = '';
 
   @Output() buttonClick = new EventEmitter();
 
-  onButtonClick() :void{
-    this.buttonClick.emit(this.title);
+  onButtonClick(): void{
+    this.buttonClick.emit({title: this.title, icon: this.icon});
   }
 
 }
