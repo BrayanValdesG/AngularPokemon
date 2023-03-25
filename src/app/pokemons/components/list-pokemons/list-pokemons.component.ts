@@ -1,3 +1,4 @@
+import { transition, trigger, style, animate } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResponseGetPokemon } from '@pokemons/models/pokemon.model';
@@ -7,7 +8,19 @@ import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-list-pokemons',
   templateUrl: './list-pokemons.component.html',
-  styleUrls: ['./list-pokemons.component.scss']
+  styleUrls: ['./list-pokemons.component.scss'],
+  animations: [
+    trigger("enterAnimation", [
+      transition(":enter", [
+        style({ transform: "translateY(-3%)", opacity: 0 }),
+        animate("150ms", style({ transform: "translateY(0)", opacity: 1 })),
+      ]),
+      transition(":leave", [
+        style({ transform: "translateY(0)", opacity: 1 }),
+        animate("150ms", style({ transform: "translateY(-3%)", opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class ListPokemonsComponent implements OnInit, OnDestroy {
 
@@ -15,6 +28,7 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
   pokemons: ResponseGetPokemon[] = [];
   filterPokemon = '';
   form!: FormGroup;
+  isNew = false;
 
   constructor(
     private pokemonService: PokemonService,
@@ -55,7 +69,9 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
 
   savePokemon($event: any) {
     if (this.form.valid) {
-      this.pokemonService.savePokemon(this.form.getRawValue()).subscribe();
+      this.pokemonService.savePokemon(this.form.getRawValue()).subscribe((res) => {
+        this.pokemons.push(res);
+      });
     }
   }
 
@@ -68,6 +84,14 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
 
   trackByPokemon(idx: number,pokemon: ResponseGetPokemon) {
     return pokemon.id;
+  }
+
+  clickNew() {
+    this.isNew = true;
+  }
+
+  cancel() {
+    this.isNew = false;
   }
 
 }

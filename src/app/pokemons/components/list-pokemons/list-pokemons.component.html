@@ -9,7 +9,7 @@
         <input type="text" name="" id="" placeholder="Buscar" [(ngModel)]="filterPokemon">
     </div>
     <div class="spacer"></div>
-    <app-button [title]="'Nuevo'" [icon]="'add'" [class]="'primaryColor'"></app-button>
+    <app-button [title]="'Nuevo'" [icon]="'add'" [class]="'primaryColor'" (buttonClick)="clickNew()"></app-button>
 </div>
 
 <div class="card-container">
@@ -40,7 +40,7 @@
     </table>
 </div>
 
-<div class="card-container">
+<div class="card-container" [@enterAnimation] *ngIf="isNew">
     <div class="card">
         <form [formGroup]="form" novalidate>
         <div class="row" style="justify-content: center">
@@ -73,7 +73,7 @@
         </div>
         <div class="row" style="justify-content: center">
             <app-button [title]="'Guardar'" [icon]="'save'" [class]="'primaryColor'" [isDisabled]="form.invalid" (buttonClick)="savePokemon($event)"></app-button>
-            <app-button [title]="'Cancelar'" [icon]="'close'" [class]="'primaryColor'"></app-button>
+            <app-button [title]="'Cancelar'" [icon]="'close'" [class]="'primaryColor'" (buttonClick)="cancel()"></app-button>
         </div>
      </form>
     </div>
