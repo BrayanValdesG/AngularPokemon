@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pokemon of pokemons | searchPokemon:filterPokemon; trackBy:trackByPokemon">
+            <tr *ngFor="let pokemon of pokemons | searchPokemon:filterPokemon; trackBy:trackByPokemon;index as i">
                 <td>{{pokemon.name}}</td>
                 <td style="text-align: center"><img [ngSrc]="pokemon.image" [alt]="pokemon.name" width="100" height="100"></td>
                 <td>{{pokemon.attack}}</td>
@@ -32,7 +32,7 @@
                 <td>
                     <div class="operationsWrapper">
                         <app-button [icon]="'border_color'" [class]="'icon'"></app-button>
-                        <app-button [icon]="'delete_forever'" [class]="'icon'"></app-button>
+                        <app-button [icon]="'delete_forever'" [class]="'icon'" (buttonClick)="deletePokemon($event, pokemon, i)"></app-button>
                     </div>
                 </td>
             </tr>

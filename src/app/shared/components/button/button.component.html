@@ -1,4 +1,4 @@
-<button class="card card-small {{classButton}}" tabindex="0" type="button" (click)="onButtonClick()">
+<button class="card card-small {{classButton}}" tabindex="0" type="button" (click)="onButtonClick()" [disabled]="isDisabled">
     <span class="material-symbols-outlined">
         {{icon}}
     </span>

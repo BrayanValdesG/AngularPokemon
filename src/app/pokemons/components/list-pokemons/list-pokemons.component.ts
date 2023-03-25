@@ -33,8 +33,15 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
     this.pokemonService.getPokemons()
     .pipe(takeUntil(this.unsubscribe$))
     .subscribe((res) => {
-      // this.pokemons = res;
+      this.pokemons = res;
     });
+  }
+
+  deletePokemon(evt: any, pokemon: ResponseGetPokemon, index: number) {
+    this.pokemonService.deletePokemon(pokemon.id)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe();
+    this.pokemons.splice(index, 1)
   }
 
   trackByPokemon(idx: number,pokemon: ResponseGetPokemon) {

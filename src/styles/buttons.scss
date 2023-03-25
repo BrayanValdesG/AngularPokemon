@@ -6,6 +6,7 @@
         height: 16px !important;
         min-width: 5rem;
         display: flex;
+        cursor: pointer;
 
         svg {
             path {
@@ -19,6 +20,7 @@
     button {
         background: transparent;
         border: 0px;
+        cursor: pointer;
 
         span {
             color: $primaryColor;

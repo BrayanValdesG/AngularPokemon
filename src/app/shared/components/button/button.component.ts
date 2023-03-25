@@ -10,6 +10,7 @@ export class ButtonComponent {
   @Input() title: string = '';
   @Input() icon: string = '';
   @Input() classButton: string = '';
+  @Input() isDisabled: boolean = false;
 
   @Output() buttonClick = new EventEmitter();
 

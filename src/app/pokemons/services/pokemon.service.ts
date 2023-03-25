@@ -16,7 +16,19 @@ export class PokemonService {
   getPokemons(): Observable<ResponseGetPokemon[]> {
     return this.http.get<ResponseGetPokemon[]>(this.apiPokemon + '/?idAuthor=1')
     .pipe(map(this.extractData))
-    .pipe(catchError(this.handleError));;
+    .pipe(catchError(this.handleError));
+  }
+
+  savePokemon(body: any) {
+    return this.http.post(this.apiPokemon, body)
+    .pipe(map(this.extractData))
+    .pipe(catchError(this.handleError));
+  }
+
+  deletePokemon(idPokemon: any) {
+    return this.http.delete(this.apiPokemon + `/${idPokemon}`)
+    .pipe(map(this.extractData))
+    .pipe(catchError(this.handleError));
   }
 
   // Retorna el json de la petición
