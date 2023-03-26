@@ -31,7 +31,7 @@
                 <td>{{pokemon.defense}}</td>
                 <td>
                     <div class="operationsWrapper">
-                        <app-button [icon]="'border_color'" [class]="'icon'"></app-button>
+                        <app-button [icon]="'border_color'" [class]="'icon'" (buttonClick)="editPokemon(pokemon)"></app-button>
                         <app-button [icon]="'delete_forever'" [class]="'icon'" (buttonClick)="deletePokemon($event, pokemon, i)"></app-button>
                     </div>
                 </td>
@@ -40,7 +40,7 @@
     </table>
 </div>
 
-<div class="card-container" [@enterAnimation] *ngIf="isNew">
+<div class="card-container" [@enterAnimation] *ngIf="isNew || isEdit">
     <div class="card">
         <form [formGroup]="form" novalidate>
         <div class="row" style="justify-content: center">
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="row" style="justify-content: center">
-            <app-button [title]="'Guardar'" [icon]="'save'" [class]="'primaryColor'" [isDisabled]="form.invalid" (buttonClick)="savePokemon($event)"></app-button>
+            <app-button [title]="'Guardar'" [icon]="'save'" [class]="'primaryColor'" [isDisabled]="form.invalid" (buttonClick)="isNew ? savePokemon() : updatePokemon()"></app-button>
             <app-button [title]="'Cancelar'" [icon]="'close'" [class]="'primaryColor'" (buttonClick)="cancel()"></app-button>
         </div>
      </form>

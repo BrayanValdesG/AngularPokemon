@@ -19,8 +19,20 @@ export class PokemonService {
     .pipe(catchError(this.handleError));
   }
 
-  savePokemon(body: any) {
+  getPokemonById(id: number): Observable<ResponseGetPokemon> {
+    return this.http.get<ResponseGetPokemon>(this.apiPokemon + `/${id}`)
+    .pipe(map(this.extractData))
+    .pipe(catchError(this.handleError));
+  }
+
+  savePokemon(body: ResponseGetPokemon) {
     return this.http.post(this.apiPokemon, body)
+    .pipe(map(this.extractData))
+    .pipe(catchError(this.handleError));
+  }
+
+  updatePokemon(body: ResponseGetPokemon, id: number) {
+    return this.http.put(this.apiPokemon + `/${id}`, body)
     .pipe(map(this.extractData))
     .pipe(catchError(this.handleError));
   }

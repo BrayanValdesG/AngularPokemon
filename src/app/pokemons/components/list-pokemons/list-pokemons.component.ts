@@ -29,6 +29,8 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
   filterPokemon = '';
   form!: FormGroup;
   isNew = false;
+  isEdit = false;
+  pokemonEdit: ResponseGetPokemon = {} as ResponseGetPokemon;
 
   constructor(
     private pokemonService: PokemonService,
@@ -53,7 +55,7 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
       image: ['', Validators.required],
       attack: [0, Validators.required],
       defense: [0, Validators.required],
-      hp: ['100'],
+      hp: [100],
       type: ['unknown'],
       idAuthor: ['1']
     });
@@ -67,12 +69,40 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
     });
   }
 
-  savePokemon($event: any) {
+  savePokemon() {
     if (this.form.valid) {
-      this.pokemonService.savePokemon(this.form.getRawValue()).subscribe((res) => {
+      this.pokemonService.savePokemon(this.form.getRawValue())
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((res) => {
         this.pokemons.push(res);
+        this.form.reset();
+        this.cancel();
       });
     }
+  }
+
+  updatePokemon() {
+    if (this.form.valid) {
+        this.pokemonService.updatePokemon(this.form.getRawValue(), this.pokemonEdit.id)
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((res) => {
+          const findPokemonEditIndex = this.pokemons.findIndex((item) => item.id === this.pokemonEdit.id);
+          this.pokemons[findPokemonEditIndex] = this.form.getRawValue();
+          this.form.reset();
+          this.cancel();
+        });
+    }
+  }
+
+  editPokemon(pokemonSelected: ResponseGetPokemon) {
+    this.pokemonEdit = pokemonSelected;
+    this.pokemonService.getPokemonById(pokemonSelected.id)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((res) => {
+      this.form.reset();
+      this.form.patchValue(res);
+      this.isEdit = true;
+    });
   }
 
   deletePokemon(evt: any, pokemon: ResponseGetPokemon, index: number) {
@@ -92,6 +122,8 @@ export class ListPokemonsComponent implements OnInit, OnDestroy {
 
   cancel() {
     this.isNew = false;
+    this.isEdit = false;
+    this.pokemonEdit = {} as ResponseGetPokemon;
   }
 
 }
