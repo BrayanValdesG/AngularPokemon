@@ -6,5 +6,5 @@ export interface ResponseGetPokemon {
     defense:   number;
     hp:        number;
     type:      string;
-    id_author: number;
+    idAuthor: number;
 }
